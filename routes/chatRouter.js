@@ -3,19 +3,19 @@ import express from "express";
 const router = express.Router();
 
 
-router.get('/chats', (request, response) => {
+router.get('/', (request, response) => {
 
 })
 
-router.get('/chats/:id', (request, response) => {
+router.get('/:id', (request, response) => {
 
 })
 
-router.get('/chats/:id/messages', (request, response) => {
+router.get('/:id/messages', (request, response) => {
 
 })
 
-router.get('/chats/messages/:id', (request, response) => {
+router.get('/messages/:id', (request, response) => {
 
 })
 

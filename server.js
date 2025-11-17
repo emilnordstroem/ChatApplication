@@ -49,22 +49,13 @@ app.get('/', (request, response) => {
     response.redirect('/signup')
 })
 
-// user sign up router
+
+// routers
 app.use('/signup', signUpRouter)
-
-// user log in router
 app.use('/login', logInRouter)
-
-// chat router
 app.use('/chats', chatRouter)
-app.use('/chats/:id', chatRouter)
-app.use('/chats/:id/messages', chatRouter)
-app.use('/chats/messages/:id', chatRouter)
-
-// user router
 app.use('/users', userRouter)
-app.use('/users/:id', userRouter)
-app.use('/users/:id/messages', userRouter)
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
