@@ -5,6 +5,7 @@ import session from 'express-session';
 import fs from 'fs/promises'
 
 import chatRouter from './routes/chatRouter.js'
+import userRouter from './routes/userRouter.js'
 
 const app = express();
 const port = 10000;
@@ -36,6 +37,11 @@ app.get('/chats', chatRouter)
 app.get('/chats/:id', chatRouter)
 app.get('/chats/:id/messages', chatRouter)
 app.get('/chats/messages/:id', chatRouter)
+
+// user router
+app.get('/users', userRouter)
+app.get('/users/:id', userRouter)
+app.get('/users/:id/messages', userRouter)
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
