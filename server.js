@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import fs from 'fs/promises'
 
+import chatRouter from './routes/chatRouter.js'
+
 const app = express();
 const port = 10000;
 
@@ -29,7 +31,11 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
+// chat router
+app.get('/chats', chatRouter)
+app.get('/chats/:id', chatRouter)
+app.get('/chats/:id/messages', chatRouter)
+app.get('/chats/messages/:id', chatRouter)
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
