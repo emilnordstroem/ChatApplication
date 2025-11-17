@@ -50,23 +50,21 @@ app.get('/', (request, response) => {
 })
 
 // user sign up router
-app.get('/signup', signUpRouter)
-app.post('/signup', signUpRouter)
+app.use('/signup', signUpRouter)
 
 // user log in router
-app.get('/login', logInRouter)
-app.post('/login', logInRouter)
+app.use('/login', logInRouter)
 
 // chat router
-app.get('/chats', chatRouter)
-app.get('/chats/:id', chatRouter)
-app.get('/chats/:id/messages', chatRouter)
-app.get('/chats/messages/:id', chatRouter)
+app.use('/chats', chatRouter)
+app.use('/chats/:id', chatRouter)
+app.use('/chats/:id/messages', chatRouter)
+app.use('/chats/messages/:id', chatRouter)
 
 // user router
-app.get('/users', userRouter)
-app.get('/users/:id', userRouter)
-app.get('/users/:id/messages', userRouter)
+app.use('/users', userRouter)
+app.use('/users/:id', userRouter)
+app.use('/users/:id/messages', userRouter)
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
