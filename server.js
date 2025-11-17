@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import fs from 'fs/promises'
 
+import signUpRouter from './routes/signUpRouter.js'
+import logInRouter from './routes/logInRouter.js'
 import chatRouter from './routes/chatRouter.js'
 import userRouter from './routes/userRouter.js'
 
@@ -33,6 +35,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+// user sign up router
+app.get('/signup', signUpRouter)
+app.post('/signup', signUpRouter)
+
+// user log in router
+app.get('/login', logInRouter)
+app.post('/login', logInRouter)
 
 // chat router
 app.get('/chats', chatRouter)
