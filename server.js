@@ -34,6 +34,16 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use('/', (request, response, next) => {
+    if (!request.session.isLoggedIn || typeof(request.session.isLoggedIn) == 'undefined') {
+        return response.redirect('/register')
+    } 
+    return next()
+})
+
+app.get('/register', (request, response) => {
+    response.render('registerUserPage')
+})
 
 // user sign up router
 app.get('/signup', signUpRouter)

@@ -2,11 +2,11 @@ import express from "express";
 
 const router = express.Router();
 
-app.get('/signup', (request, response) => {
+router.get('/signup', (request, response) => {
 
 })
 
-app.post('/signup', (request, response) => {
+router.post('/signup', (request, response) => {
     
 })
 
