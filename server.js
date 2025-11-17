@@ -32,6 +32,8 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+
 // chat router
 app.get('/chats', chatRouter)
 app.get('/chats/:id', chatRouter)
