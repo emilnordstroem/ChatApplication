@@ -49,7 +49,6 @@ app.get('/', (request, response) => {
     response.redirect('/signup')
 })
 
-
 // routers
 app.use('/signup', signUpRouter)
 app.use('/login', logInRouter)
