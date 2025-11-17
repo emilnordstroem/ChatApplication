@@ -34,15 +34,19 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/', (request, response, next) => {
-    if (!request.session.isLoggedIn || typeof(request.session.isLoggedIn) == 'undefined') {
-        return response.redirect('/register')
-    } 
-    return next()
+app.use((request, response, next) => {
+    if (request.session.isLoggedIn === true) {
+        return next()
+    } else if (request.path === '/login' || request.path === '/signup') {
+        // if user is redirected to either login or signup, let it continue
+        return next()
+    }
+    response.redirect('/login')
 })
 
-app.get('/register', (request, response) => {
-    response.render('registerUserPage')
+// initial access to site
+app.get('/', (request, response) => {
+    response.redirect('/signup')
 })
 
 // user sign up router
