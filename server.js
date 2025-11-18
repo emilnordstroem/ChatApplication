@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 // initial access to site
 app.get('/', (request, response) => {
-
+    response.render('index')
 })
 
 // routers
