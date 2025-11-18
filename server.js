@@ -4,11 +4,6 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import fs from 'fs/promises'
 
-import signUpRouter from './routes/signUpRouter.js'
-import logInRouter from './routes/logInRouter.js'
-import chatRouter from './routes/chatRouter.js'
-import userRouter from './routes/userRouter.js'
-
 const app = express();
 const port = 10000;
 
@@ -34,26 +29,12 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use((request, response, next) => {
-    if (request.session.isLoggedIn === true) {
-        return next()
-    } else if (request.path === '/login' || request.path === '/signup') {
-        // if user is redirected to either login or signup, let it continue
-        return next()
-    }
-    response.redirect('/login')
-})
-
 // initial access to site
 app.get('/', (request, response) => {
-    response.redirect('/signup')
+
 })
 
 // routers
-app.use('/signup', signUpRouter)
-app.use('/login', logInRouter)
-app.use('/chats', chatRouter)
-app.use('/users', userRouter)
 
 
 app.listen(port, () => {
